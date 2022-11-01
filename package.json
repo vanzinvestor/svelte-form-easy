@@ -1,0 +1,36 @@
+{
+  "name": "svelte-form-easy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vanzinvestor/svelte-form-easy"
+  },
+  "keywords": [
+    "svelte",
+    "yup",
+    "forms",
+    "form-validation"
+  ],
+  "homepage": "https://github.com/vanzinvestor/svelte-form-easy",
+  "author": "Vanz Investor <vanzinvestor@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "svelte": "^3.52.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@tsconfig/svelte": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
+  }
+}
