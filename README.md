@@ -112,7 +112,6 @@ export const signupSchema = Yup.object<
 </script>
 
 <main>
-  <img src={logo} alt="" />
   <h1>Svelte Form Easy</h1>
   <form on:submit={handleSubmit}>
     <div class="input-field">
@@ -234,10 +233,6 @@ export const signupSchema = Yup.object<
     text-align: center;
     padding: 1em;
     margin: 0 auto;
-  }
-
-  img {
-    height: 80px;
   }
 
   h1 {
