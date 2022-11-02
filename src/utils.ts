@@ -76,7 +76,7 @@ export function update<T>(object: Writable<T>, path: string, value: any) {
 export const validateForm = <T = any>(
   schema: AnySchema<T>,
   data: T
-): { isValid: boolean; errors: null | T } => {
+): { isValid: boolean; errors: null | Record<keyof T, string> } => {
   try {
     schema.validateSync(data, { abortEarly: false });
     return { isValid: true, errors: null };
@@ -84,6 +84,6 @@ export const validateForm = <T = any>(
     const errors = err.inner.reduce((acc: any, err: any) => {
       return { ...acc, [err.path]: err.message };
     }, {});
-    return { isValid: false, errors: errors as T };
+    return { isValid: false, errors: errors as Record<keyof T, string> };
   }
 };
