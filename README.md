@@ -1,5 +1,9 @@
 # Svelte Form Easy
 
+Svelte realtime form validator with [yup](https://www.npmjs.com/package/yup) validation
+
+## Install
+
 Install `svelte-form-easy` package
 
 ```bash
@@ -14,33 +18,30 @@ npm i yup
 
 ## Use
 
-```svelte
-<script lang="ts">
-  import * as Yup from 'yup';
-  import type { AnySchema } from 'yup';
-  import { useForm } from 'svelte-form-easy'; // Import this
+### Step 1 Create interface
 
-  // Create interface
-  interface ISignupForm {
+```ts
+// src/interfaces/ISignupForm.ts
+interface ISignupForm {
   username: string;
   email: string;
   password: string;
   confirmPassword: string;
   termsAndConditions: boolean;
-  }
+}
+```
 
-  // Create initial values
-  const initialValues: ISignupForm = {
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    termsAndConditions: false,
-  };
+### Step 2 Create schema validation
 
-  // Create validate schema
-  const signupSchema = Yup.object<
-  Record<keyof ISignupForm, AnySchema>>().shape({
+```ts
+// src/schemas/signupSchema.ts
+import * as Yup from 'yup';
+import type { AnySchema } from 'yup';
+import type { ISignupForm } from './../interfaces/ISignupForm';
+
+export const signupSchema = Yup.object<
+  Record<keyof ISignupForm, AnySchema>
+>().shape({
   username: Yup.string()
     .min(3, 'Username must be at least 3 characters')
     .required('Username is required')
@@ -59,7 +60,27 @@ npm i yup
     [true],
     'Terms and conditions is required'
   ),
-  });
+});
+```
+
+### Step 3 Use in components (App.svelte)
+
+```svelte
+<script lang="ts">
+  import * as Yup from 'yup';
+  import type { AnySchema } from 'yup';
+  import type { ISignupForm } from './interfaces/ISignupForm';
+  import { signupSchema } from './schemas/signupSchema';
+  import { useForm } from 'svelte-form-easy'; // Import this
+
+   // Create initial values
+  const initialValues: ISignupForm = {
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    termsAndConditions: false,
+  };
 
   // Use package
   const {
@@ -80,7 +101,6 @@ npm i yup
   $: dirty = useValidTouch($touched);
 
   const handleSubmit = (e) => {
-    e.stopPropagation();
     e.preventDefault();
     if (valid.isValid) {
       console.log($form);
@@ -331,3 +351,11 @@ npm i yup
   }
 </style>
 ```
+
+## Example App
+
+[Sigup App](https://github.com/vanzinvestor/example-svelte-form-easy-signup-app)
+
+## Inspire by
+
+[svelte-forms-lib](https://www.npmjs.com/package/svelte-forms-lib) [svelte-yup](https://www.npmjs.com/package/svelte-yup)
