@@ -11,6 +11,7 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
+  "ignorePatterns": ["rollup.config.mjs", "svelte.config.js", "lib"],
   "rules": {
     "@typescript-eslint/no-explicit-any": ["off"]
   }

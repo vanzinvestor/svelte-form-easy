@@ -1,4 +1,4 @@
-import { Writable } from 'svelte/store';
+import type { Writable } from 'svelte/store';
 import type { AnySchema } from 'yup';
 
 export function isCheckbox(element: HTMLInputElement) {
