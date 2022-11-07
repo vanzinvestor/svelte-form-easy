@@ -1,9 +1,9 @@
 <script lang="ts">
   import { setContext } from 'svelte';
   import type { AnySchema } from 'yup';
-  import type { IFormContext, IFormSubmit } from '../interfaces/form';
-  import { useForm } from '..';
-  import { schemaKey } from './key';
+  import type { IFormContext, IFormSubmit } from '../interfaces/IForm';
+  import { useForm } from '../useForm';
+  import { schemaKey } from '../key';
 
   export let initialValues: object;
   export let validationSchema: AnySchema;

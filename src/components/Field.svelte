@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext } from 'svelte';
-  import type { IFormContext } from '../interfaces/form';
-  import { schemaKey } from './key';
+  import type { IFormContext } from '../interfaces/IForm';
+  import { schemaKey } from '../key';
 
   export let name: string;
   export let type: string | undefined = 'text';
