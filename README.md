@@ -65,6 +65,127 @@ export const signupSchema = Yup.object<
 
 ### Step 3 Use in components (App.svelte)
 
+#### _VERSION 2.0.0 OR LATEST_
+
+```svelte
+<script lang="ts">
+  import * as Yup from 'yup';
+  import type { AnySchema } from 'yup';
+  import type { ISignupForm } from './interfaces/ISignupForm';
+  import { signupSchema } from './schemas/signupSchema';
+  import type { FormSubmit } from 'svelte-form-easy';// Import this
+  import { Form, Field, ErrorMessage, Button } from 'svelte-form-easy'; // Import this
+
+   // Create initial values
+  const initialValues: ISignupForm = {
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    termsAndConditions: false,
+  };
+
+  const handleSubmit = ({
+    valid,
+    form,
+    reset,
+    forceTouched,
+  }: FormSubmit<ISignupForm>) => {
+    if (valid.isValid) {
+      console.log(form);
+      reset();
+    } else {
+      forceTouched();
+    }
+  };
+</script>
+
+<main>
+  <h1>Svelte Form Easy</h1>
+  <Form
+    class="form-signup"
+    {handleSubmit}
+    {initialValues}
+    validationSchema={signupSchema}
+  >
+    <div class="input-field">
+      <label for="username">Username</label>
+       <!-- reference name--->
+      <Field
+        type="text"
+        name="username"
+        id="username"
+        autocomplete="off"
+        placeholder="Enter Username"
+      />
+      <ErrorMessage name="username" />
+    </div>
+    <div class="input-field">
+      <label for="email">Email</label>
+       <!-- reference name--->
+      <Field
+        type="text"
+        name="email"
+        id="email"
+        autocomplete="off"
+        placeholder="Enter Email"
+      />
+      <ErrorMessage name="email" />
+    </div>
+    <div class="input-field">
+      <label for="password">Password</label>
+       <!-- reference name--->
+      <Field
+        type="password"
+        name="password"
+        id="password"
+        autocomplete="off"
+        placeholder="Enter Password"
+      />
+      <ErrorMessage name="password" />
+    </div>
+    <div class="input-field">
+      <label for="confirmPassword">Confirm Password</label>
+       <!-- reference name--->
+      <Field
+        type="password"
+        name="confirmPassword"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+        autocomplete="off"
+      />
+      <ErrorMessage name="confirmPassword" />
+    </div>
+    <div class="input-terms">
+      <!-- reference name--->
+      <Field
+        type="checkbox"
+        name="termsAndConditions"
+        id="termsAndConditions"
+        className="terms"
+      />
+      <label for="termsAndConditions">
+        <p>
+          By creating an account you agree to our <a
+            href="/terms-and-conditions">Terms & Conditions</a
+          >.
+        </p>
+      </label>
+      <ErrorMessage  name="termsAndConditions" className="terms-invalid-feedback" />
+    </div>
+    <div class="input-field">
+      <Button type="submit">Signup</Button>
+    </div>
+  </Form>
+</main>
+
+<style type="scss">
+ /*Use as same version 1.0.0*/
+</style>
+```
+
+#### _VERSION 1.0.0 OR LATEST_
+
 ```svelte
 <script lang="ts">
   import * as Yup from 'yup';
@@ -82,7 +203,6 @@ export const signupSchema = Yup.object<
     termsAndConditions: false,
   };
 
-  // Use package
   const {
     form,
     touched,
