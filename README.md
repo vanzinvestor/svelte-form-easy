@@ -1,6 +1,10 @@
 # Svelte Form Easy
 
+[![npm version](https://badge.fury.io/js/svelte-form-easy.svg)](https://badge.fury.io/js/svelte-form-easy)
+
 Svelte realtime form validator with [yup](https://www.npmjs.com/package/yup) validation
+
+[Demo](https://stackblitz.com/edit/vitejs-vite-vesyu1?file=src/components/v1.0.0/Signup.svelte)
 
 ## Install
 
