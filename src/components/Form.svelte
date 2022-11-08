@@ -1,7 +1,7 @@
 <script lang="ts">
   import { setContext } from 'svelte';
   import type { AnySchema } from 'yup';
-  import type { IFormContext, IFormSubmit } from '../interfaces/IForm';
+  import type { FormContext, FormSubmit } from '../interfaces/IForm';
   import { useForm } from '../useForm';
   import { schemaKey } from '../key';
 
@@ -22,7 +22,7 @@
     validationSchema,
   });
 
-  setContext<IFormContext>(schemaKey, {
+  setContext<FormContext>(schemaKey, {
     form,
     touched,
     useValidForm,
@@ -31,7 +31,7 @@
     handleTouch,
   });
 
-  export let handleSubmit: (args: IFormSubmit) => void;
+  export let handleSubmit: (args: FormSubmit) => void;
 </script>
 
 <form

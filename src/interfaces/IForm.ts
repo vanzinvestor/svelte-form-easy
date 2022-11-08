@@ -1,21 +1,21 @@
 import type { Writable } from 'svelte/store';
 
-export interface IFormValid<T = any> {
+export interface FormValid<T = any> {
   isValid: boolean;
   errors: Record<keyof T, string> | null;
 }
 
-export interface IFormContext<T = any> {
+export interface FormContext<T = any> {
   form: Writable<T>;
   touched: Writable<Record<keyof T, boolean>>;
-  useValidForm: (form: T) => IFormValid<T>;
+  useValidForm: (form: T) => FormValid<T>;
   useValidTouch: (touch: Record<keyof T, boolean>) => boolean;
   handleChange: (event: any) => void;
   handleTouch: (event: any) => void;
 }
 
-export interface IFormSubmit<T = any> {
-  valid: IFormValid<T>;
+export interface FormSubmit<T = any> {
+  valid: FormValid<T>;
   form: T;
   reset: () => void;
   forceTouched: () => void;
