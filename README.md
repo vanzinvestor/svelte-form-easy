@@ -4,7 +4,7 @@
 
 Svelte realtime form validator with [yup](https://www.npmjs.com/package/yup) validation
 
-[Demo](https://stackblitz.com/edit/vitejs-vite-vesyu1?file=src/components/v1.0.0/Signup.svelte)
+[Demo](https://stackblitz.com/edit/vitejs-vite-vesyu1?file=src/components/v2.0.0/Signup.svelte)
 
 ## Install
 
